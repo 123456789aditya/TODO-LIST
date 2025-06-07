@@ -1,0 +1,55 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    color:#fff;
+    font-weight:900;
+}
+
+.todo-container{
+    align-items:center;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+    padding-top:3%;
+    background-image: linear-gradient(100deg,#001214,#001f29);
+    color:white;
+    transition:0.3s linear;
+    overflow:hidden;
+}
+
+.header,
+.form,
+.datetime{
+    margin:0 1rem;
+    min-height:10vh;
+    width:100%;
+}
+
+.header{
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size:3rem;
+}
+
+.myUnOrdList{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    max-width:1200px;
+}
+
+.check-btn,
+.delete-btn{
+    background-color:white;
+}
