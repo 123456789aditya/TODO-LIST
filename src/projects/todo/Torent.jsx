@@ -1,64 +1,63 @@
-import { useState } from "react"
+import { MdCheckBox } from "react-icons/md";
+import { MdDeleteForever } from "react-icons/md";
+import './Torent.css'
+import { useState } from "react";
 
-export const Todo=()=>{
-    const[inputValue,setInputvalue]=useState("")
-    const[task,setTask]=useState([])
-    const[dateTime,setDateTime]=useState("")
-    const handleInputValue=(value)=>{
-        setInputvalue(value)
+const Todo = () => {
+  const [inputHandle, setInputHandle] = useState("");
+  cosnt[(task, setTask)] = useState([]);
+  const HandleInputChange = (value) => {
+    setInputHandle(value);
+  };
+  const HandleForm = (event) => {
+    event.preventDefault();
+
+    if (!HandleInputChange) return;
+
+    if (task.includes(HandleInputChange)) {
+      HandleInputChange("");
     }
+    setTask(() => [...Previous, inputHandle]);
+  };
+  return (
+    <>
+      <section className="Overall">
+        <header class="headring">
+          <h1>TODO-LIST</h1>
+        </header>
 
-    const handleFormSubmit=(event)=>{
-        event.preventDefault()
-
-        if(!inputValue) return;
-
-        if(task.includes(inputValue)) return;
-
-        setTask((previous)=>[...previous,inputValue])
-
-        setInputvalue("")
-
-
-
-    }
-    setInterval(()=>{
-        const now=new Date()
-        const formattedDate=now.toLocaleDateString;
-        const formattedTime=now.toLocaleTimeString;
-        setDateTime(`${formattedDate}-${formattedTime}`)
-    })
-
-    return(
-        <>
-        <section>
-            <header>
-                <h1>TODO LIST</h1>
-                <h2>{dateTime}</h2>
-            </header>
-
-            <section>
-                <form onSubmit={handleFormSubmit}>
-                    <div>
-                        <input type='text' value={inputValue} onChange={(event)=>handleInputValue(event.target.value)} />
-                    </div>
-
-                    <div>
-                        <button type="submit">Click</button>
-                    </div>
-                </form>
-            </section>
-
-            <section>
-                <ul>
-                    {task.map((curElem,index)=>{
-                        return(
-                            <li key={index}>{curEem}</li>
-                        )
-                    })}
-                </ul>
-            </section>
+        <section className="Formclass">
+          <form onchange={HandleForm}>
+            <div>
+              <input className="inputstyle"
+                type="text"
+                autoComplete="off"
+                value={inputHandle}
+                onChange={(event) => HandleInputChange(event.target.value)}
+              />
+            </div>
+            <button type="submit" className="addtask">ADD TASK</button>
+          </form>
         </section>
-        </>
-    )
-}
+
+        <section>
+          <ul>
+            {task.map((curElem, id) => {
+              return (
+                <li key={id}>
+                  <span>{curElem}</span>
+                  <button className="tick">
+                    <MdCheckBox />
+                  </button>
+                  <button className="cross">
+                    <MdDeleteForever />
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      </section>
+    </>
+  );
+};

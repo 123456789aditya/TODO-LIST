@@ -42,6 +42,16 @@ export const Todo = () => {
   // const formattedTime = now.toLocaleTimeString();
   // setDateTime(`${formattedDate}--${formattedTime}`),1000});
 
+  const handleDeleteTodo=(value)=>{
+    const updatedTask=task.filter((curElem)=>curElem!==value)
+    setTask(updatedTask)
+
+  }
+  const handleClearAll=()=>{
+    setTask([])
+
+  }
+
 
   return (
     <>
@@ -78,13 +88,16 @@ export const Todo = () => {
                   <button className="check-btn">
                     <MdCheckBox />
                   </button>
-                  <button className="delete-btn">
+                  <button className="delete-btn" onClick={()=>handleDeleteTodo(curElem)}>
                     <MdDeleteForever />
                   </button>
                 </li>
               );
             })}
           </ul>
+        </section>
+        <section>
+          <button onClick={handleClearAll}>clear</button>
         </section>
       </section>
     </>
